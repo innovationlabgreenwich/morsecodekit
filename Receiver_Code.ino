@@ -30,10 +30,10 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
 
-  Serial.begin(9600);
+  //Serial.begin(19200);
   
   radio.begin();                                   //initializing the radio
-  radio.openReadingPipe(0, address);               //start the channel to receive data
+  radio.openReadingPipe(1, address);               //start the channel to receive data
   radio.setPALevel(RF24_PA_MIN);                   //setting the power amplification level
   radio.startListening();                          //makes this module a receiver 
 }
@@ -42,7 +42,7 @@ void loop() {
   if (radio.available()) {                         //first checking if there is any available data
     radio.read(&buttonPress, sizeof(buttonPress)); //receiving the actual data
 
-    Serial.println(buttonPress);
+    //Serial.println(buttonPress);
     
       if(buttonPress) {
         digitalWrite(LED_PIN, HIGH);  //turning on the LED
@@ -50,6 +50,8 @@ void loop() {
       else {
         digitalWrite(LED_PIN, LOW);
       }
+
+      buttonPress = 0;
   }
 
   
