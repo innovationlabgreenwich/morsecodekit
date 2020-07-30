@@ -39,13 +39,15 @@ void setup() {
 void loop() {
   if (radio.available()) {                         //first checking if there is any available data
     radio.read(&buttonPress, sizeof(buttonPress)); //receiving the actual data
+
+      if(buttonPress) {
+        digitalWrite(LED_PIN, HIGH);  //turning on the LED
+      }
+      else {
+        digitalWrite(LED_PIN, LOW);
+      }
   }
 
-  if(buttonPress) {
-    digitalWrite(LED_PIN, HIGH);  //turning on the LED
-  }
-  else {
-    digitalWrite(LED_PIN, LOW);
-  }
+  
 
 }
