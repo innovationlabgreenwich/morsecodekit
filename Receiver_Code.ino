@@ -7,7 +7,7 @@
 #include <RF24.h>
 
 //defining pins to be used in the setup - if you change connections, renumber them accordingly here
--------------------
+//-------------------
 #define CE_PIN 2
 #define CS_PIN 10
 #define MOSI_PIN 11
@@ -17,7 +17,7 @@
 #define BUTTON_PIN 3
 
 #define LED_PIN 5
--------------------
+//-------------------
 
 int buttonPress = 0;                               //variable to track whether the button is pressed
 
@@ -42,6 +42,10 @@ void loop() {
   }
 
   if(buttonPress) {
-    digitalWrite(LED_PIN, HIGH);                   //turning on the LED
+    digitalWrite(LED_PIN, HIGH);  //turning on the LED
   }
+  else {
+    digitalWrite(LED_PIN, LOW);
+  }
+
 }
