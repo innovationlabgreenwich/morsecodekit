@@ -29,6 +29,8 @@ void setup() {
   //defining input and output pins
   pinMode(BUTTON_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
+
+  Serial.begin(9600);
   
   radio.begin();                                   //initializing the radio
   radio.openReadingPipe(0, address);               //start the channel to receive data
@@ -40,6 +42,8 @@ void loop() {
   if (radio.available()) {                         //first checking if there is any available data
     radio.read(&buttonPress, sizeof(buttonPress)); //receiving the actual data
 
+    Serial.println(buttonPress);
+    
       if(buttonPress) {
         digitalWrite(LED_PIN, HIGH);  //turning on the LED
       }
